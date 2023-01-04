@@ -16,6 +16,10 @@
 		D2FC8CF02964EFEA0069FACB /* AlbumListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CEF2964EFEA0069FACB /* AlbumListTableViewCell.swift */; };
 		D2FC8CF22964F0060069FACB /* DetailListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CF12964F0060069FACB /* DetailListTableViewCell.swift */; };
 		D2FC8CF42964F9770069FACB /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CF32964F9770069FACB /* DetailListViewController.swift */; };
+		D2FC8CF7296580A00069FACB /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CF6296580A00069FACB /* AlbumModel.swift */; };
+		D2FC8CF9296580AD0069FACB /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CF8296580AD0069FACB /* SongModel.swift */; };
+		D2FC8CFB296581080069FACB /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CFA296581080069FACB /* NetworkRequest.swift */; };
+		D2FC8CFD296581170069FACB /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CFC296581170069FACB /* NetworkDataFetch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		D2FC8CEF2964EFEA0069FACB /* AlbumListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListTableViewCell.swift; sourceTree = "<group>"; };
 		D2FC8CF12964F0060069FACB /* DetailListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListTableViewCell.swift; sourceTree = "<group>"; };
 		D2FC8CF32964F9770069FACB /* DetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
+		D2FC8CF6296580A00069FACB /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
+		D2FC8CF8296580AD0069FACB /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		D2FC8CFA296581080069FACB /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		D2FC8CFC296581170069FACB /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				D2C0D6482964ED86002B8DA8 /* App */,
-				D2C0D6472964ED6E002B8DA8 /* Services */,
+				D2C0D6472964ED6E002B8DA8 /* Network */,
 				D2C0D6452964ED62002B8DA8 /* Model */,
 				D2C0D64B2964EE4C002B8DA8 /* Controller */,
 				D2C0D6462964ED69002B8DA8 /* View */,
@@ -77,6 +85,8 @@
 		D2C0D6452964ED62002B8DA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2FC8CF6296580A00069FACB /* AlbumModel.swift */,
+				D2FC8CF8296580AD0069FACB /* SongModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -91,11 +101,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D2C0D6472964ED6E002B8DA8 /* Services */ = {
+		D2C0D6472964ED6E002B8DA8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D2FC8CFA296581080069FACB /* NetworkRequest.swift */,
+				D2FC8CFC296581170069FACB /* NetworkDataFetch.swift */,
 			);
-			path = Services;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		D2C0D6482964ED86002B8DA8 /* App */ = {
@@ -203,12 +215,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FC8CF7296580A00069FACB /* AlbumModel.swift in Sources */,
 				D2FC8CF22964F0060069FACB /* DetailListTableViewCell.swift in Sources */,
+				D2FC8CF9296580AD0069FACB /* SongModel.swift in Sources */,
 				D2FC8CF42964F9770069FACB /* DetailListViewController.swift in Sources */,
 				D2C0D64A2964EDD6002B8DA8 /* AlbumListViewController.swift in Sources */,
 				D2C0D6322964EC44002B8DA8 /* AppDelegate.swift in Sources */,
 				D2C0D6342964EC44002B8DA8 /* SceneDelegate.swift in Sources */,
+				D2FC8CFB296581080069FACB /* NetworkRequest.swift in Sources */,
 				D2FC8CF02964EFEA0069FACB /* AlbumListTableViewCell.swift in Sources */,
+				D2FC8CFD296581170069FACB /* NetworkDataFetch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
