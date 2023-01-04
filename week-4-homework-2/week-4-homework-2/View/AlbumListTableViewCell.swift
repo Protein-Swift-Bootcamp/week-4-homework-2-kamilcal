@@ -14,6 +14,7 @@ class AlbumListTableViewCell: UITableViewCell {
     @IBOutlet var groupNameLabel: UILabel!
     @IBOutlet var imagaView: UIImageView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,3 +27,25 @@ class AlbumListTableViewCell: UITableViewCell {
     }
 
 }
+extension AlbumListTableViewCell {
+    func config(_ album: Album) {
+        albumNameLabel.text = album.collectionName
+        groupNameLabel.text = album.artistName
+        songCountLabel.text = "\(album.trackCount) tracks"
+        if let urlString = album.artworkUrl100 {
+            NetworkRequest.shared.request(urlString: urlString) { [weak self] result in
+                switch result {
+                    
+                case .success(let data):
+                    self?.imagaView.image = UIImage(data: data)
+                case .failure(let error):
+                    self?.imagaView.image = nil
+                    print("No album logo: ", error.localizedDescription)
+                }
+            }
+        } else {
+            imagaView.image = nil
+        }
+    }
+}
+

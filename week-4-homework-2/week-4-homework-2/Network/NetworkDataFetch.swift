@@ -11,13 +11,13 @@ class NetworkDataFetch {
     static let shared = NetworkDataFetch()
     let decoder = JSONDecoder()
     
-    func fetchAlbum(urlString: String, response: (AlbumModel?, Error?) -> Void) {
+    func fetchAlbum(urlString: String, response: @escaping (AlbumModel?, Error?) -> Void) {
         NetworkRequest.shared.request(urlString: urlString) { result in
             switch result {
                 
             case .success(let data):
                 do {
-                    let jsonAlbum = try decoder.decode(AlbumModel.self, from: data)
+                    let jsonAlbum = try self.decoder.decode(AlbumModel.self, from: data)
                     response(jsonAlbum, nil)
                 } catch let jsonError {
                     print("Failed to decode json \(jsonError.localizedDescription)")
@@ -29,13 +29,13 @@ class NetworkDataFetch {
         }
     }
     
-    func fetchSong(urlString: String, response: (SongsModel?, Error?) -> Void) {
+    func fetchSong(urlString: String, response: @escaping (SongsModel?, Error?) -> Void) {
         NetworkRequest.shared.request(urlString: urlString) { result in
             switch result {
                 
             case .success(let data):
                 do {
-                    let jsonSong = try decoder.decode(SongsModel.self, from: data)
+                    let jsonSong = try self.decoder.decode(SongsModel.self, from: data)
                     response(jsonSong, nil)
                 } catch let jsonError {
                     print("Failed to decode json \(jsonError.localizedDescription)")

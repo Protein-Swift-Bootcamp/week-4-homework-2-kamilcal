@@ -27,3 +27,4 @@ class DetailListViewController: UIViewController {
     */
 
 }
+

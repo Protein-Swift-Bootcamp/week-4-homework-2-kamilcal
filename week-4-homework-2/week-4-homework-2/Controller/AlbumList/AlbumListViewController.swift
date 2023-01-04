@@ -8,17 +8,21 @@
 import UIKit
 
 class AlbumListViewController: UIViewController {
+
        
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     
-    
+    var albums: [Album]?
+    var presenter: AlbumListPresenter!
+    var timer: Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
+        presenter = AlbumListPresenter(view: self, albums: albums)
     }
 }
 
@@ -27,17 +31,38 @@ extension AlbumListViewController: UITableViewDelegate, UITableViewDataSource, U
     //MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return albums?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AlbumListTableViewCell
+        guard let album = self.albums?[indexPath.row] else { return cell }
+        cell.config(album)
+        return cell
     }
     //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
     //MARK: - UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        <#code#>
+        let searchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        guard let text = searchText else { preconditionFailure() }
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] _ in
+            self?.presenter.didChangeSearch(albumName: text)
+        })
     }
+}
+extension AlbumListViewController: AlbumListViewProtocol {
+    func showMusicList(albums: [Album]?) {
+        self.albums = albums
+        tableView.reloadData()
+    }
+    
+    func getAlbum(at index: Int) -> Album {
+        guard let album = self.albums?[index] else { preconditionFailure() }
+        return album
+    }
+    
+    
 }

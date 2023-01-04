@@ -20,6 +20,8 @@
 		D2FC8CF9296580AD0069FACB /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CF8296580AD0069FACB /* SongModel.swift */; };
 		D2FC8CFB296581080069FACB /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CFA296581080069FACB /* NetworkRequest.swift */; };
 		D2FC8CFD296581170069FACB /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CFC296581170069FACB /* NetworkDataFetch.swift */; };
+		D2FC8CFF29659ABF0069FACB /* AlbumListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8CFE29659ABF0069FACB /* AlbumListPresenter.swift */; };
+		D2FC8D0129659B2A0069FACB /* AlbumListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC8D0029659B2A0069FACB /* AlbumListViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		D2FC8CF8296580AD0069FACB /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		D2FC8CFA296581080069FACB /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		D2FC8CFC296581170069FACB /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
+		D2FC8CFE29659ABF0069FACB /* AlbumListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListPresenter.swift; sourceTree = "<group>"; };
+		D2FC8D0029659B2A0069FACB /* AlbumListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				D2C0D6492964EDD6002B8DA8 /* AlbumListViewController.swift */,
+				D2FC8CFE29659ABF0069FACB /* AlbumListPresenter.swift */,
+				D2FC8D0029659B2A0069FACB /* AlbumListViewProtocol.swift */,
 			);
 			path = AlbumList;
 			sourceTree = "<group>";
@@ -215,9 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FC8D0129659B2A0069FACB /* AlbumListViewProtocol.swift in Sources */,
 				D2FC8CF7296580A00069FACB /* AlbumModel.swift in Sources */,
 				D2FC8CF22964F0060069FACB /* DetailListTableViewCell.swift in Sources */,
 				D2FC8CF9296580AD0069FACB /* SongModel.swift in Sources */,
+				D2FC8CFF29659ABF0069FACB /* AlbumListPresenter.swift in Sources */,
 				D2FC8CF42964F9770069FACB /* DetailListViewController.swift in Sources */,
 				D2C0D64A2964EDD6002B8DA8 /* AlbumListViewController.swift in Sources */,
 				D2C0D6322964EC44002B8DA8 /* AppDelegate.swift in Sources */,
@@ -378,7 +386,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,7 +417,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
