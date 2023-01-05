@@ -9,6 +9,7 @@ import UIKit
 
 class DetailListTableViewCell: UITableViewCell {
     
+    
     @IBOutlet var songNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

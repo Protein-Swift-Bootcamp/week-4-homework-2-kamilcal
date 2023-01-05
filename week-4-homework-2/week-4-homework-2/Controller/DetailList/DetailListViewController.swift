@@ -24,6 +24,8 @@ class DetailListViewController: UIViewController {
         tableView.dataSource = self
         setData()
         fetchSong(album: albums)
+        navigationItem.largeTitleDisplayMode = .never
+        imageView.layer.cornerRadius = 5.0
     }
     
 }
@@ -48,9 +50,9 @@ extension DetailListViewController {
         guard let album = albums else { return }
         
         albumNameLabel.text = album.collectionName
-        groupNameLabel.text = "Artist Name: \(album.artistName)"
-        dateLabel.text = "Date Release: \(setDateFormatter(date: album.releaseDate))"
-        countSongLabel.text = "\(album.trackCount) tracks:"
+        groupNameLabel.text = "\(album.artistName)"
+        dateLabel.text = "\(setDateFormatter(date: album.releaseDate))"
+        countSongLabel.text = "\(album.trackCount) tracks"
         guard let url = album.artworkUrl100 else { return }
         setLogoAlbum(urlString: url)
     }
