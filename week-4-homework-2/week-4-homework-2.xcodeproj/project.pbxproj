@@ -80,7 +80,6 @@
 				D2C0D64B2964EE4C002B8DA8 /* Controller */,
 				D2C0D6462964ED69002B8DA8 /* View */,
 				D2C0D63A2964EC45002B8DA8 /* Assets.xcassets */,
-				D2C0D63C2964EC45002B8DA8 /* LaunchScreen.storyboard */,
 				D2C0D63F2964EC45002B8DA8 /* Info.plist */,
 			);
 			path = "week-4-homework-2";
@@ -98,6 +97,7 @@
 		D2C0D6462964ED69002B8DA8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2C0D63C2964EC45002B8DA8 /* LaunchScreen.storyboard */,
 				D2C0D6372964EC44002B8DA8 /* Main.storyboard */,
 				D2FC8CEF2964EFEA0069FACB /* AlbumListTableViewCell.swift */,
 				D2FC8CF12964F0060069FACB /* DetailListTableViewCell.swift */,

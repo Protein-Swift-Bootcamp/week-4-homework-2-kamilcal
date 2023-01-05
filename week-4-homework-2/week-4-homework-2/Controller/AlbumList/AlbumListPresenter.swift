@@ -15,11 +15,12 @@ class AlbumListPresenter {
         self.view = view
         self.albums = albums
     }
-    
+//    "https://itunes.apple.com/search?term=\(albumName)"
+//    "https://itunes.apple.com/search?term=\(albumName)&id=211192863&entity=song&media=music"
     //MARK: - didChangeSearch
     func didChangeSearch(albumName: String) {
-        let urlString = "https://itunes.apple.com/search?term=\(albumName)"
-        
+        let urlString =
+        "https://itunes.apple.com/search?entity=album&attribute=albumTerm&offset=0&limit=100&term=\(albumName)"
         NetworkDataFetch.shared.fetchAlbum(urlString: urlString) { [weak self] album, error in
             if error == nil {
                 guard let albumData = album else { return }

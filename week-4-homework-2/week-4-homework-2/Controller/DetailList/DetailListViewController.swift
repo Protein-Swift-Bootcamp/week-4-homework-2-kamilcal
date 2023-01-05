@@ -92,9 +92,14 @@ extension DetailListViewController {
                 self?.songs = song.results
                 self?.tableView.reloadData()
             } else {
-                let alert = UIAlertController(title: "Error",
-                                              message: error!.localizedDescription,
-                                              preferredStyle: .alert)
+                let warningController = UIAlertController(title: "Error",
+                                                          message: (error!.localizedDescription),
+                                                          preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "OK",
+                                                 style: .cancel)
+                self?.tableView.reloadData()
+                warningController.addAction(cancelAction)
+                self?.present(warningController, animated: true)
                 
             }
             self?.tableView.reloadData()
