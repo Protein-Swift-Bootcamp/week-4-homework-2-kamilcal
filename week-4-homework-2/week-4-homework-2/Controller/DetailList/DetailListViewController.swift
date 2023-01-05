@@ -26,6 +26,7 @@ class DetailListViewController: UIViewController {
         fetchSong(album: albums)
         navigationItem.largeTitleDisplayMode = .never
         imageView.layer.cornerRadius = 5.0
+        navigationItem.title = ""
     }
     
 }
