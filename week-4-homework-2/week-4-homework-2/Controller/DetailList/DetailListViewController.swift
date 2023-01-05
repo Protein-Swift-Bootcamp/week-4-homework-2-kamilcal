@@ -35,7 +35,7 @@ extension DetailListViewController {
         guard let album = albums else { return }
         
         albumNameLabel.text = album.collectionName
-        groupNameLabel.text = "Artist Name:\(album.artistName)"
+        groupNameLabel.text = "Artist Name: \(album.artistName)"
         dateLabel.text = "Date Release: \(setDateFormatter(date: album.releaseDate))"
         countSongLabel.text = "\(album.trackCount) tracks:"
         guard let url = album.artworkUrl100 else { return }
@@ -90,7 +90,7 @@ extension DetailListViewController {
     
 }
 
-extension DetailListViewController: UITableViewDataSource{
+extension DetailListViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         songs.count
@@ -101,4 +101,6 @@ extension DetailListViewController: UITableViewDataSource{
         cell.config(songs[indexPath.row])
         return cell 
     }
+    
+    
 }
