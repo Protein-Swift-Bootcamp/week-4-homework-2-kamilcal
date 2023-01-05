@@ -15,6 +15,4 @@ protocol AlbumListViewProtocol {
     func move(to: AlbumListViewNavigation)
     func showMusicList(albums: [Album]?)
     func getAlbum(at index: Int) -> Album
-//    func showSearchError()
-
 }

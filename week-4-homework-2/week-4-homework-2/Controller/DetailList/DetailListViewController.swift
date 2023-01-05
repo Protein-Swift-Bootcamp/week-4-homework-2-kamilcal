@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailListViewController: UIViewController {
-
+    
     @IBOutlet var albumNameLabel: UILabel!
     @IBOutlet var groupNameLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
@@ -25,12 +25,25 @@ class DetailListViewController: UIViewController {
         setData()
         fetchSong(album: albums)
     }
+    
+}
+// MARK: - UITableViewDataSource
 
+extension DetailListViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        songs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailListTableViewCell
+        cell.config(songs[indexPath.row])
+        return cell
+    }
 }
 
 extension DetailListViewController {
-    
-    
+    // MARK: - setData
     private func setData() {
         guard let album = albums else { return }
         
@@ -40,9 +53,9 @@ extension DetailListViewController {
         countSongLabel.text = "\(album.trackCount) tracks:"
         guard let url = album.artworkUrl100 else { return }
         setLogoAlbum(urlString: url)
-        }
+    }
     
-    
+    // MARK: - setDateFormatter
     private func setDateFormatter(date: String) -> String {
         let df = DateFormatter()
         df.dateFormat = "yyy'-'MM'-'dd'T'HH':'mm':'ssZZZ'"
@@ -52,7 +65,7 @@ extension DetailListViewController {
         let releaseDate = fromDate.string(from: date)
         return releaseDate
     }
-    
+    // MARK: - setLogoAlbum
     private func setLogoAlbum(urlString: String?) {
         if let url = urlString {
             NetworkRequest.shared.request(urlString: url) { [weak self] result in
@@ -68,7 +81,7 @@ extension DetailListViewController {
             imageView.image = nil
         }
     }
-    
+    // MARK: - fetchSong
     private func fetchSong(album: Album?) {
         guard let album = album else { return }
         let idAlbum = album.collectionId
@@ -87,20 +100,5 @@ extension DetailListViewController {
             self?.tableView.reloadData()
         }
     }
-    
-}
-
-extension DetailListViewController: UITableViewDataSource, UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        songs.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailListTableViewCell
-        cell.config(songs[indexPath.row])
-        return cell 
-    }
-    
     
 }

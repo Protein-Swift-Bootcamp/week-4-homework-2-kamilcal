@@ -7,10 +7,9 @@
 
 import UIKit
 
-class AlbumListViewController: UIViewController {
+class AlbumListViewController: UIViewController, UISearchResultsUpdating {
     
     
-    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
@@ -22,12 +21,30 @@ class AlbumListViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
         presenter = AlbumListPresenter(view: self, albums: albums)
         spinner.hidesWhenStopped = true
-
+        setupSearchController()
     }
     
+    //MARK: - SearchController
+    
+    private func setupSearchController(){
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Type something here to search"
+        navigationItem.searchController = search
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] _ in
+            self?.spinner.startAnimating()
+            self?.presenter.didChangeSearch(albumName: text)
+        })
+        
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -48,17 +65,6 @@ extension AlbumListViewController: UITableViewDelegate, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.selectRow(at: indexPath.row)
     }
-    
-    //MARK: - UISearchBarDelegate
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let searchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        guard let text = searchText else { preconditionFailure() }
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] _ in
-            self?.spinner.startAnimating()
-            self?.presenter.didChangeSearch(albumName: text)
-        })
-    }
 }
 //MARK: - AlbumListViewProtocol
 extension AlbumListViewController: AlbumListViewProtocol {
@@ -73,10 +79,6 @@ extension AlbumListViewController: AlbumListViewProtocol {
         }
     }
     
-    //    func showSearchError() {
-    //        <#code#>
-    //    }
-    //
     func showMusicList(albums: [Album]?) {
         self.albums = albums
         spinner.stopAnimating()
