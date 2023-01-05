@@ -40,9 +40,9 @@ extension AlbumListViewController: UITableViewDelegate, UITableViewDataSource, U
         return cell
     }
     //MARK: - UITableViewDelegate
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.selectRow(at: indexPath.row)
+    }
     //MARK: - UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let searchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
@@ -54,6 +54,21 @@ extension AlbumListViewController: UITableViewDelegate, UITableViewDataSource, U
     }
 }
 extension AlbumListViewController: AlbumListViewProtocol {
+    func move(to: AlbumListViewNavigation) {
+        switch to {
+        case .details(let album):
+            let detailVc = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+                .instantiateViewController(withIdentifier: "DetailListViewController") as? DetailListViewController
+            detailVc?.albums = album
+            detailVc?.title = "Details"
+            self.navigationController?.pushViewController(detailVc!, animated: true)
+        }
+    }
+    
+//    func showSearchError() {
+//        <#code#>
+//    }
+//    
     func showMusicList(albums: [Album]?) {
         self.albums = albums
         tableView.reloadData()

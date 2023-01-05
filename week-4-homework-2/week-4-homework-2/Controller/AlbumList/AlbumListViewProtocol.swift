@@ -8,12 +8,13 @@
 import Foundation
 
 enum AlbumListViewNavigation {
-    case exit
-    case profile
     case details(Album)
 }
 
 protocol AlbumListViewProtocol {
+    func move(to: AlbumListViewNavigation)
     func showMusicList(albums: [Album]?)
     func getAlbum(at index: Int) -> Album
+//    func showSearchError()
+
 }

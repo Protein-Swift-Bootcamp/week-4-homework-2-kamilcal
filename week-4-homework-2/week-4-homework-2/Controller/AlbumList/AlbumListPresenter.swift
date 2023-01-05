@@ -29,11 +29,17 @@ class AlbumListPresenter {
                     }
                     self?.albums = sortedAlbums
                 } else {
+//                    self?.view.showSearchError()
                 }
             } else {
                 print(error!.localizedDescription)
             }
             self?.view.showMusicList(albums: self?.albums)
         }
+    }
+    
+    func selectRow(at index: Int) {
+        let album = view.getAlbum(at: index)
+        view.move(to: .details(album))
     }
 }
